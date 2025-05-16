@@ -1,10 +1,13 @@
-# sap-hotfix
 sap-hotfix/
-├── playwright.config.ts
-├── scrapeHotfix.ts         # SAP 핫픽스 추출 (Playwright)
-├── pushToNotion.ts         # Notion DB에 데이터 입력
 ├── .github/
 │   └── workflows/
-│       └── hotfix-auto.yml # GitHub Actions 자동화 정의
+│       └── hotfix.yml      ✅ GitHub Actions 자동화 스크립트
+├── dist/                   ✅ 빌드된 js 파일 저장 위치
+├── scrapeHotfix.ts
+├── pushToNotion.ts
+├── tsconfig.json
 ├── package.json
-├── .env                    # Notion 토큰 등 환경변수
+├── .env                    ❌ 커밋 금지 (Secrets로 대체)
+├── .gitignore
+└── hotfixes.d.ts
+
