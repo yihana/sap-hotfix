@@ -1,0 +1,31 @@
+name: SAP Hotfix to Notion
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # 매주 월요일 0시 (UTC 기준)
+  workflow_dispatch:
+
+jobs:
+  hotfix:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run SAP Hotfix Scraper
+      run: node scrapeHotfix.ts
+
+    - name: Push to Notion
+      env:
+        NOTION_SECRET: ${{ secrets.NOTION_SECRET }}
+        NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+      run: node pushToNotion.ts
