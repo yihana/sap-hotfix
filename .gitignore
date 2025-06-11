@@ -1,0 +1,7 @@
+# .gitignore 파일 내용
+
+sap-hotfix/
+
+.env
+
+*.log
